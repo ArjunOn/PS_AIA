@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/PS_AIA/static/js/main.ae1bcc9b.js",
+    "main.js": "/PS_AIA/static/js/main.d6c2136d.js",
     "index.html": "/PS_AIA/index.html",
-    "main.ae1bcc9b.js.map": "/PS_AIA/static/js/main.ae1bcc9b.js.map"
+    "main.d6c2136d.js.map": "/PS_AIA/static/js/main.d6c2136d.js.map"
   },
   "entrypoints": [
-    "static/js/main.ae1bcc9b.js"
+    "static/js/main.d6c2136d.js"
   ]
 }
