@@ -19,6 +19,19 @@ def create_meeting(meeting: MeetingCreate, db: Session = Depends(get_db), user=D
     db.refresh(db_meeting)
     return db_meeting
 
+@router.patch('/{meeting_id}', response_model=MeetingOut)
+def update_meeting(meeting_id: int, meeting: MeetingCreate, db: Session = Depends(get_db), user=Depends(get_current_user)):
+    db_meeting = db.query(Meeting).filter(Meeting.id == meeting_id, Meeting.user_id == user.id).first()
+    if not db_meeting:
+        raise HTTPException(status_code=404, detail="Meeting not found")
+    db_meeting.title = meeting.title
+    db_meeting.datetime = meeting.datetime
+    db_meeting.location = meeting.location
+    db_meeting.description = meeting.description
+    db.commit()
+    db.refresh(db_meeting)
+    return db_meeting
+
 @router.delete('/{meeting_id}')
 def delete_meeting(meeting_id: int, db: Session = Depends(get_db), user=Depends(get_current_user)):
     meeting = db.query(Meeting).filter(Meeting.id == meeting_id, Meeting.user_id == user.id).first()
